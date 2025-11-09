@@ -8,7 +8,8 @@ def run_queries():
 
     # --- 1. Query all books by a specific author ---
     print("\n1. All books by 'George Orwell':")
-    author = Author.objects.get(name="George Orwell")
+    author_name = "George Orwell"
+    author = Author.objects.get(name=author_name)
     books_by_author = author.books.all()
     for book in books_by_author:
         print(f"   - {book.title}")
