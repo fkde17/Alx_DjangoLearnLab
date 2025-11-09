@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Book</title></head>
+<body>
+    <h1>Edit: {{ book.title }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+    <p><a href="{% url 'relationship_app:book_list' %}">Back</a></p>
+</body>
+</html>

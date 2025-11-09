@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Book List</title></head>
+<body>
+    <h1>All Books</h1>
+    {% if user.is_authenticated and user.userprofile.role == 'Admin' %}
+        <p><a href="{% url 'relationship_app:add_book' %}">+ Add Book</a></p>
+    {% endif %}
+    <ul>
+        {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author.name }}
+            {% if perms.relationship_app.can_change_book %}
+                <a href="{% url 'relationship_app:edit_book' book.pk %}">[Edit]</a>
+            {% endif %}
+            {% if perms.relationship_app.can_delete_book %}
+                <a href="{% url 'relationship_app:delete_book' book.pk %}">[Delete]</a>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No books.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
