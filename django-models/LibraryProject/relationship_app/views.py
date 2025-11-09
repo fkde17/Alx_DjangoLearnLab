@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib import messages
 from .models import Book
 from .forms import BookForm
-
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 
 
 def list_books(request):
